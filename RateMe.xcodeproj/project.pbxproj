@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FD57F735D52DE7B8F96D5FA /* Pods_RateMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B056A6FD61FBD4B2EB326793 /* Pods_RateMe.framework */; };
 		363014F4201F797F0034DE24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363014F3201F797F0034DE24 /* AppDelegate.swift */; };
 		363014F6201F797F0034DE24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363014F5201F797F0034DE24 /* ViewController.swift */; };
 		363014F9201F797F0034DE24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 363014F7201F797F0034DE24 /* Main.storyboard */; };
 		363014FB201F797F0034DE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 363014FA201F797F0034DE24 /* Assets.xcassets */; };
 		363014FE201F797F0034DE24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 363014FC201F797F0034DE24 /* LaunchScreen.storyboard */; };
+		36301506201F806D0034DE24 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36301505201F806D0034DE24 /* FloatRatingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,10 @@
 		363014FA201F797F0034DE24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		363014FD201F797F0034DE24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		363014FF201F79800034DE24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36301505201F806D0034DE24 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
+		B056A6FD61FBD4B2EB326793 /* Pods_RateMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RateMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1511F58DBCFAD916F90F110 /* Pods-RateMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-RateMe/Pods-RateMe.release.xcconfig"; sourceTree = "<group>"; };
+		F49CD8D856F667750DA8AC43 /* Pods-RateMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RateMe/Pods-RateMe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FD57F735D52DE7B8F96D5FA /* Pods_RateMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				363014F2201F797F0034DE24 /* RateMe */,
 				363014F1201F797F0034DE24 /* Products */,
+				D0D922547C080208C14E5775 /* Pods */,
+				569D95B7E24896D9240B9A3C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,9 +68,27 @@
 				363014F7201F797F0034DE24 /* Main.storyboard */,
 				363014FA201F797F0034DE24 /* Assets.xcassets */,
 				363014FC201F797F0034DE24 /* LaunchScreen.storyboard */,
+				36301505201F806D0034DE24 /* FloatRatingView.swift */,
 				363014FF201F79800034DE24 /* Info.plist */,
 			);
 			path = RateMe;
+			sourceTree = "<group>";
+		};
+		569D95B7E24896D9240B9A3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B056A6FD61FBD4B2EB326793 /* Pods_RateMe.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0D922547C080208C14E5775 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F49CD8D856F667750DA8AC43 /* Pods-RateMe.debug.xcconfig */,
+				D1511F58DBCFAD916F90F110 /* Pods-RateMe.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36301502201F79800034DE24 /* Build configuration list for PBXNativeTarget "RateMe" */;
 			buildPhases = (
+				20482110222BE7D25B3A3E79 /* [CP] Check Pods Manifest.lock */,
 				363014EC201F797F0034DE24 /* Sources */,
 				363014ED201F797F0034DE24 /* Frameworks */,
 				363014EE201F797F0034DE24 /* Resources */,
+				AADF9E5EEEB11116D452180A /* [CP] Embed Pods Frameworks */,
+				90852A050D87DFCE98274143 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,11 +161,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		20482110222BE7D25B3A3E79 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RateMe-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90852A050D87DFCE98274143 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RateMe/Pods-RateMe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AADF9E5EEEB11116D452180A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RateMe/Pods-RateMe-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/StatusAlert/StatusAlert.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StatusAlert.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RateMe/Pods-RateMe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		363014EC201F797F0034DE24 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36301506201F806D0034DE24 /* FloatRatingView.swift in Sources */,
 				363014F6201F797F0034DE24 /* ViewController.swift in Sources */,
 				363014F4201F797F0034DE24 /* AppDelegate.swift in Sources */,
 			);
@@ -272,6 +357,7 @@
 		};
 		36301503201F79800034DE24 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F49CD8D856F667750DA8AC43 /* Pods-RateMe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +373,7 @@
 		};
 		36301504201F79800034DE24 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1511F58DBCFAD916F90F110 /* Pods-RateMe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StatusAlert
 
 class ViewController: UIViewController {
 
@@ -20,6 +21,16 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func submitAction(_ sender: UIButton) {
+        // Creating StatusAlert instance
+        let statusAlert = StatusAlert.instantiate(withImage: UIImage(named: "checkmark"),
+                                                  title: "Submitted",
+                                                  message: "",
+                                                  canBePickedOrDismissed: false)
+        
+        // Presenting created instance
+        statusAlert.showInKeyWindow()
+    }
+    
 }
 
