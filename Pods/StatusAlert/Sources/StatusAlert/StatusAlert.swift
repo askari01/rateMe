@@ -480,6 +480,7 @@ import UIKit
         
         let titleLabel = createBaseLabel()
         titleLabel.font = appearance.titleFont
+        titleLabel.textColor = UIColor.black
         
         let attributedText = NSAttributedString(
             string: title,
