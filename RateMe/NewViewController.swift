@@ -11,32 +11,33 @@ import CoreLocation
 import FirebaseStorage
 import FirebaseDatabase
 
-class NewViewController: UIViewController {
+class NewViewController: UIViewController  {
 
+    var locationManager: CLLocationManager!
+    var geoCoder: CLGeocoder!
+    var ref: DatabaseReference!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        var ref: DatabaseReference!
         
+        locationManager = CLLocationManager()
+        geoCoder = CLGeocoder()
         ref = Database.database().reference()
-        
-        let storage = Storage.storage()
-        print ("storage: /(storage)")
-        let reference = storage.reference()
-        print ("storage: /(reference)")
+        self.location()
         
         let data = DataModel.init(name: "test", receiptNumber: "test123", rating: 2)
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
         
-        let jsonData = try? encoder.encode(data)
+        // to get data from firebase database
+        ref.child("rate").observe(DataEventType.value) { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            print (value)
+        }
         
-        print (jsonData)
-        
-        reference.child("rate").putData(jsonData!)
-        ref.child("rate").setValue(["name":"test", "receiptNumber":"test321","rating":2])
-        
+        // to store data in firebase database
+//        ref.child("rate").setValue(["name":"test", "receiptNumber":"test321","rating":2])
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,7 +45,38 @@ class NewViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func location() {
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined:
+                // Request when-in-use authorization initially
+                locationManager.requestWhenInUseAuthorization()
+                break
+                
+            case .restricted, .denied:
+                // Disable location features
+                break
+                
+            case .authorizedWhenInUse:
+                // Enable basic location features
+                break
+                
+            case .authorizedAlways:
+                // Enable any of your app's location features
+                break
+            }
+            
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        } else {
+            #if debug
+                println("Location services are not enabled");
+            #endif
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -55,4 +87,51 @@ class NewViewController: UIViewController {
     }
     */
 
+}
+
+extension NewViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var locationArray = locations as NSArray
+        var locationObj = locationArray.lastObject as! CLLocation
+        var coord = locationObj.coordinate
+        print(coord.latitude)
+        print(coord.longitude)
+
+        CLGeocoder().reverseGeocodeLocation(locationObj) {(placemarks, error) in
+            if (error != nil) {
+                print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
+                return
+            }
+            
+            if placemarks!.count > 0 {
+                let pm = placemarks![0] as CLPlacemark
+                self.displayLocationInfo(placemark: pm)
+            } else {
+                print("Problem with the data received from geocoder")
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationManager.stopUpdatingLocation()
+        if ((error) != nil)
+        {
+            print(error)
+        }
+    }
+    
+    func displayLocationInfo(placemark: CLPlacemark) {
+        if placemark != nil {
+            //stop updating location to save battery life
+            locationManager.stopUpdatingLocation()
+            print (placemark.locality)
+            print (placemark.postalCode)
+            print (placemark.administrativeArea)
+            print (placemark.country)
+            print (placemark.location?.timestamp)
+            print (placemark.name)
+            print (placemark.timeZone)
+        }
+    }
+    
 }
