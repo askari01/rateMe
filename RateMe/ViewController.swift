@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         floatingRatingView.delegate = self as? FloatRatingViewDelegate
         floatingRatingView.type = .halfRatings
         
-        // must be called before reference for storing offline data
+        // must be called after reference for storing offline data
         ref = Database.database().reference()
     }
 
@@ -47,25 +47,19 @@ class ViewController: UIViewController {
         
         submitBtn.isEnabled = false
         
-        // to get data from firebase database
-        ref.child("\(self.receiptNumber!)").observe(DataEventType.value) { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            print (value)
-        }
-        
          //to store data in firebase database
-                ref
-        .child("\(self.receiptNumber!)")
-        .setValue([
-        "name":"\(self.name)",
-        "receiptNumber":"\(self.receiptNumber!)",
-        "lat": "\(self.lat!)",
-        "lng": "\(self.lng!)",
-        "locality": "\(self.locality)",
-        "postalCode": "\(self.postalCode)",
-        "country": "\(self.country)",
-        "timeStamp": "\(self.timeStamp)",
-        "rating":self.rating])
+        ref
+            .child("\(self.receiptNumber!)")
+            .setValue([
+            "name":"\(self.name)",
+            "receiptNumber":"\(self.receiptNumber!)",
+            "lat": "\(self.lat!)",
+            "lng": "\(self.lng!)",
+            "locality": "\(self.locality)",
+            "postalCode": "\(self.postalCode)",
+            "country": "\(self.country)",
+            "timeStamp": "\(self.timeStamp)",
+            "rating":self.rating])
         
         
         // Creating StatusAlert instance

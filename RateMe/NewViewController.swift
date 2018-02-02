@@ -8,11 +8,14 @@
 
 import UIKit
 import CoreLocation
+import FirebaseDatabase
 
 class NewViewController: UIViewController  {
 
     var locationManager: CLLocationManager!
     var geoCoder: CLGeocoder!
+    
+    var ref: DatabaseReference!
 
     @IBOutlet weak var receiptNumber: UITextField!
     
@@ -34,6 +37,8 @@ class NewViewController: UIViewController  {
         geoCoder = CLGeocoder()
         alert = UIAlertController()
 
+        ref = Database.database().reference()
+        
 //        self.location()
         
         let data = DataModel.init(name: "test", receiptNumber: "test123", rating: 2)
@@ -103,7 +108,22 @@ class NewViewController: UIViewController  {
             return
         }
         
-        self.performSegue(withIdentifier: "showRating", sender: self)
+        // to get data from firebase database
+        ref
+            .child("\(receiptNumber.text!)")
+            .observe(DataEventType.value)
+            { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                print ("Value: \(value)")
+                var receipt = value?.value(forKeyPath: "receiptNumber") as? String
+                print (receipt)
+                if self.receiptNumber.text! != receipt {
+                    self.performSegue(withIdentifier: "showRating", sender: self)
+                } else {
+                    print ("already exists")
+                    self.receiptNumber.shake()
+                }
+        }
     }
     
     // MARK: - Navigation
