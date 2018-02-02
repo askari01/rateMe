@@ -32,11 +32,12 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="231" id="K7A-Ci-c5B"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="uGp-36-OFs"/>
+                                    <action selector="nextBtnAction:" destination="QmZ-H6-quL" eventType="touchUpInside" id="1CR-Dv-g6h"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Receipt Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puc-jR-Lgu">
@@ -44,7 +45,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="231" id="z6h-oQ-tg6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -63,6 +64,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jbw-O4-tfU"/>
                     </view>
+                    <connections>
+                        <outlet property="receiptNumber" destination="sp8-vX-yiA" id="och-Ml-8sd"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="showRating" id="K4K-WC-FPf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ev-6k-6Zn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -98,7 +103,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="zDt-Jm-JPF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>

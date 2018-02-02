@@ -30,12 +30,28 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.3)
   - GTMSessionFetcher/Core (1.1.13)
   - IQKeyboardManagerSwift (5.0.7)
+  - KSCrash/Core (1.15.16):
+    - KSCrash/Reporting/Filters/Basic
+  - KSCrash/Recording (1.15.16):
+    - KSCrash/Recording/Tools (= 1.15.16)
+  - KSCrash/Recording/Tools (1.15.16)
+  - KSCrash/Reporting/Filters/Base (1.15.16):
+    - KSCrash/Recording
+  - KSCrash/Reporting/Filters/Basic (1.15.16):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Base
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - Sentry (3.11.1):
+    - Sentry/Core (= 3.11.1)
+    - Sentry/KSCrash (= 3.11.1)
+  - Sentry/Core (3.11.1)
+  - Sentry/KSCrash (3.11.1):
+    - KSCrash/Core (~> 1.15.12)
   - StatusAlert (0.10.0)
 
 DEPENDENCIES:
@@ -43,6 +59,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - IQKeyboardManagerSwift
+  - Sentry
   - StatusAlert
 
 SPEC CHECKSUMS:
@@ -55,10 +72,12 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMSessionFetcher: 5bb1eae636127de695590f50e7d248483eb891e6
   IQKeyboardManagerSwift: 30fb3a61de1af53a95e02b80fb54ed0a19d5ede5
+  KSCrash: e4cda5c8612c5f9478defcf43418f24870d313f4
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  Sentry: 1d8e03901b062b0317174efefa7f97a4ab16fa9a
   StatusAlert: a386670d9d77cb0f0af135dd6c3a6297de2e1e2c
 
-PODFILE CHECKSUM: 61d0b513e89c41e52a7d39fc0081253d946dea3b
+PODFILE CHECKSUM: f75b50f520d119d6571fd4a879b309245d88cd9b
 
 COCOAPODS: 1.3.1
