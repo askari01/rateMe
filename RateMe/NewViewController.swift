@@ -17,6 +17,7 @@ class NewViewController: UIViewController  {
     var ref: DatabaseReference!
 
     @IBOutlet weak var receiptNumber: UITextField!
+    @IBOutlet weak var nextBtn: UIButton!
     
     var name: String!
     var lat: Double!
@@ -39,8 +40,15 @@ class NewViewController: UIViewController  {
 //        self.location()
         
         _ = DataModel.init(name: "test", receiptNumber: "test123", rating: 2)
+        self.UI()
     }
 
+    func UI() {
+        self.nextBtn.layer.cornerRadius = 8
+        self.nextBtn.layer.borderWidth = 1.5
+        self.nextBtn.layer.borderColor = (UIColor.white).cgColor
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

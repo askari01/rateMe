@@ -38,6 +38,12 @@ class ViewController: UIViewController {
         ref = Database.database().reference()
     }
 
+    func UI() {
+        self.submitBtn.layer.cornerRadius = 8
+        self.submitBtn.layer.borderWidth = 1.5
+        self.submitBtn.layer.borderColor = (UIColor.white).cgColor
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,5 +92,6 @@ extension ViewController: FloatRatingViewDelegate {
         self.submitBtn.isEnabled = true
         self.submitBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
         self.rating = self.floatingRatingView.rating
+        self.UI()
     }
 }
