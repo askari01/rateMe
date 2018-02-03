@@ -44,45 +44,38 @@ class ViewController: UIViewController {
     }
 
     @IBAction func submitAction(_ sender: UIButton) {
-        
         submitBtn.isEnabled = false
-        
          //to store data in firebase database
         ref
             .child("\(self.receiptNumber!)")
             .setValue([
-            "name":"\(self.name)",
-            "receiptNumber":"\(self.receiptNumber!)",
+            "name": "\(self.name)",
+            "receiptNumber": "\(self.receiptNumber!)",
             "lat": "\(self.lat!)",
             "lng": "\(self.lng!)",
             "locality": "\(self.locality)",
             "postalCode": "\(self.postalCode)",
             "country": "\(self.country)",
             "timeStamp": "\(self.timeStamp)",
-            "rating":self.rating])
-        
+            "rating": self.rating])
         
         // Creating StatusAlert instance
         let statusAlert = StatusAlert.instantiate(withImage: UIImage(named: "checkmark"),
                                                   title: "Submitted",
                                                   message: "Thank You!",
                                                   canBePickedOrDismissed: false)
-        
         // Presenting created instance
         statusAlert.showInKeyWindow()
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "newViewController") as! NewViewController
-            self.present(newViewController, animated: true, completion: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "newViewController") as? NewViewController
+            self.present(newViewController!, animated: true, completion: nil)
         }
     }
 }
 
 extension ViewController: FloatRatingViewDelegate {
-    
     // MARK: FloatRatingViewDelegate
-    
     func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double) {
 //        print (String(format: "%.2f", self.floatingRatingView.rating))
     }
@@ -94,6 +87,4 @@ extension ViewController: FloatRatingViewDelegate {
         self.submitBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
         self.rating = self.floatingRatingView.rating
     }
-    
 }
-

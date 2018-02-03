@@ -14,7 +14,6 @@ class NewViewController: UIViewController  {
 
     var locationManager: CLLocationManager!
     var geoCoder: CLGeocoder!
-    
     var ref: DatabaseReference!
 
     @IBOutlet weak var receiptNumber: UITextField!
@@ -32,16 +31,14 @@ class NewViewController: UIViewController  {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         locationManager = CLLocationManager()
         geoCoder = CLGeocoder()
         alert = UIAlertController()
 
         ref = Database.database().reference()
-        
 //        self.location()
         
-        let data = DataModel.init(name: "test", receiptNumber: "test123", rating: 2)
+        _ = DataModel.init(name: "test", receiptNumber: "test123", rating: 2)
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,7 +54,7 @@ class NewViewController: UIViewController  {
         let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
 //        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment:"" ), style: .cancel, handler: nil)
         let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment:"" ), style: .default, handler: { action in
-            UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+            UIApplication.shared.canOpenURL(URL(string: UIApplicationOpenSettingsURLString)!)
         })
 //        controller.addAction(cancelAction)
         controller.addAction(settingsAction)
@@ -68,27 +65,22 @@ class NewViewController: UIViewController  {
     func location() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
-            
             switch CLLocationManager.authorizationStatus() {
             case .notDetermined:
                 // Request when-in-use authorization initially
                 locationManager.requestWhenInUseAuthorization()
                 break
-                
             case .restricted, .denied:
                 // Disable location features
                 createSettingsAlertController(title: "Issue", message: "Please allow location access to the app")
                 break
-                
             case .authorizedWhenInUse:
                 // Enable basic location features
                 break
-                
             case .authorizedAlways:
                 // Enable any of your app's location features
                 break
             }
-            
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         } else {
@@ -114,9 +106,7 @@ class NewViewController: UIViewController  {
             .observe(DataEventType.value)
             { (snapshot) in
                 let value = snapshot.value as? NSDictionary
-                print ("Value: \(value)")
-                var receipt = value?.value(forKeyPath: "receiptNumber") as? String
-                print (receipt)
+                let receipt = value?.value(forKeyPath: "receiptNumber") as? String
                 if self.receiptNumber.text! != receipt {
                     self.performSegue(withIdentifier: "showRating", sender: self)
                 } else {
@@ -127,11 +117,10 @@ class NewViewController: UIViewController  {
     }
     
     // MARK: - Navigation
-
 //     In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showRating" {
-            var vc: ViewController = segue.destination as! ViewController
+            let vc: ViewController = segue.destination as! ViewController // swiftlint:disable:this force_cast
             vc.name = name
             vc.receiptNumber = receiptNumber.text!
             vc.lat = lat
@@ -141,26 +130,22 @@ class NewViewController: UIViewController  {
             vc.country = country
             vc.timeStamp = timeStamp
         }
-        
     }
-
 }
 
 extension NewViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        var locationArray = locations as NSArray
-        var locationObj = locationArray.lastObject as! CLLocation
-        var coord = locationObj.coordinate
+        let locationArray = locations as NSArray
+        let locationObj = locationArray.lastObject as! CLLocation // swiftlint:disable:this force_cast
+        let coord = locationObj.coordinate
 
         lat = coord.latitude
         lng = coord.longitude
-        
         CLGeocoder().reverseGeocodeLocation(locationObj) {(placemarks, error) in
-            if (error != nil) {
+            if error != nil {
                 print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
                 return
             }
-            
             if placemarks!.count > 0 {
                 let pm = placemarks![0] as CLPlacemark
                 self.displayLocationInfo(placemark: pm)
@@ -172,8 +157,7 @@ extension NewViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         locationManager.stopUpdatingLocation()
-        if ((error) != nil)
-        {
+        if error != nil{
             print("Error: " + error.localizedDescription)
             self.createSettingsAlertController(title: "Issue", message: "Enable location from settings and check for app permissions")
         }
@@ -183,35 +167,29 @@ extension NewViewController: CLLocationManagerDelegate {
         if placemark != nil {
             //stop updating location to save battery life
             locationManager.stopUpdatingLocation()
-            
             if let name1 = placemark.name {
                 name = name1
             } else {
                 name = "couldn't get name"
             }
-            
-            if let locality1 = placemark.locality{
+            if let locality1 = placemark.locality {
                 locality = locality1
             } else {
                 locality = "couldn't get locality"
             }
-            
             if let postalCode1 = placemark.postalCode {
                 postalCode = postalCode1
             } else {
                 postalCode = "couldn't get postalCode"
             }
-            
             if let country1 = placemark.country {
                 country = country1
             } else {
                 country = "couldn't get country"
             }
-            
             timeStamp = String(describing: placemark.location?.timestamp)
         }
     }
-    
 }
 
 extension UIView {

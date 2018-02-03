@@ -12,5 +12,6 @@ target 'RateMe' do
   pod 'Firebase/Database'
   pod 'IQKeyboardManagerSwift'
   pod 'Sentry'
+  pod 'SwiftLint'
 
 end

@@ -53,6 +53,7 @@ PODS:
   - Sentry/KSCrash (3.11.1):
     - KSCrash/Core (~> 1.15.12)
   - StatusAlert (0.10.0)
+  - SwiftLint (0.24.2)
 
 DEPENDENCIES:
   - Firebase/Core
@@ -61,6 +62,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - Sentry
   - StatusAlert
+  - SwiftLint
 
 SPEC CHECKSUMS:
   Firebase: 7d3b8cd837ad9fcd391657734c0d56dab8e9a5a3
@@ -77,7 +79,8 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Sentry: 1d8e03901b062b0317174efefa7f97a4ab16fa9a
   StatusAlert: a386670d9d77cb0f0af135dd6c3a6297de2e1e2c
+  SwiftLint: 2aa21b96c8d13396a051bc1cb659d2ce1e0075b0
 
-PODFILE CHECKSUM: f75b50f520d119d6571fd4a879b309245d88cd9b
+PODFILE CHECKSUM: db3398f1559a033b29a074da59bd58fa68df029e
 
 COCOAPODS: 1.3.1

@@ -202,7 +202,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which sentry-cli >/dev/null; then\nexport SENTRY_ORG=askari\nexport SENTRY_PROJECT=rateme\nexport SENTRY_AUTH_TOKEN=6b6466dad02d49b1b993453b4681f12f0258e9c5bc7442d48cb30837b4d7c22e\nERROR=$(sentry-cli upload-dsym 2>&1 >/dev/null)\nif [ ! $? -eq 0 ]; then\necho \"warning: sentry-cli - $ERROR\"\nfi\nelse\necho \"warning: sentry-cli not installed, download from https://github.com/getsentry/sentry-cli/releases\"\nfi";
+			shellScript = "if which sentry-cli >/dev/null; then\nexport SENTRY_ORG=askari\nexport SENTRY_PROJECT=rateme\nexport SENTRY_AUTH_TOKEN=6b6466dad02d49b1b993453b4681f12f0258e9c5bc7442d48cb30837b4d7c22e\nERROR=$(sentry-cli upload-dsym 2>&1 >/dev/null)\nif [ ! $? -eq 0 ]; then\necho \"warning: sentry-cli - $ERROR\"\nfi\nelse\necho \"warning: sentry-cli not installed, download from https://github.com/getsentry/sentry-cli/releases\"\nfi\n\n\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
 		90852A050D87DFCE98274143 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

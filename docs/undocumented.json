@@ -1,0 +1,75 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/syedaskari/Projects/RateMe/RateMe/FloatRatingView.swift",
+      "line": 11,
+      "symbol": "FloatRatingViewDelegate",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/syedaskari/Projects/RateMe/RateMe/FloatRatingView.swift",
+      "line": 26,
+      "symbol": "FloatRatingView.delegate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/syedaskari/Projects/RateMe/RateMe/FloatRatingView.swift",
+      "line": 127,
+      "symbol": "FloatRatingView.FloatRatingViewType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/syedaskari/Projects/RateMe/RateMe/FloatRatingView.swift",
+      "line": 146,
+      "symbol": "FloatRatingView.init(frame:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/syedaskari/Projects/RateMe/RateMe/FloatRatingView.swift",
+      "line": 152,
+      "symbol": "FloatRatingView.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/syedaskari/Projects/RateMe/RateMe/FloatRatingView.swift",
+      "line": 275,
+      "symbol": "FloatRatingView.layoutSubviews()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/syedaskari/Projects/RateMe/RateMe/FloatRatingView.swift",
+      "line": 305,
+      "symbol": "FloatRatingView.touchesBegan(_:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/syedaskari/Projects/RateMe/RateMe/FloatRatingView.swift",
+      "line": 312,
+      "symbol": "FloatRatingView.touchesMoved(_:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/syedaskari/Projects/RateMe/RateMe/FloatRatingView.swift",
+      "line": 319,
+      "symbol": "FloatRatingView.touchesEnded(_:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/syedaskari/Projects/RateMe/RateMe/FloatRatingView.swift",
+      "line": 324,
+      "symbol": "FloatRatingView.touchesCancelled(_:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/syedaskari/Projects/RateMe"
+}
