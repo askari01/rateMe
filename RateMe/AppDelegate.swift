@@ -6,19 +6,17 @@
 //  Copyright © 2018 Syed Askari. All rights reserved.
 //
 
-import UIKit
-import Sentry
 import Firebase
 import FirebaseDatabase
 import IQKeyboardManagerSwift
+import Sentry
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
 
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 //        let value = UIInterfaceOrientation.landscapeLeft.rawValue
 //        UIDevice.current.setValue(value, forKey: "orientation")
@@ -30,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("\(error)")
             // Wrong DSN or KSCrash not installed
         }
-        
+
         // firebase
         FirebaseApp.configure()
         // keyboard
@@ -40,18 +38,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
+    func applicationWillResignActive(_: UIApplication) {
     }
 
-    func applicationDidEnterBackground(_ application: UIApplication) {
+    func applicationDidEnterBackground(_: UIApplication) {
     }
 
-    func applicationWillEnterForeground(_ application: UIApplication) {
+    func applicationWillEnterForeground(_: UIApplication) {
     }
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
+    func applicationDidBecomeActive(_: UIApplication) {
     }
 
-    func applicationWillTerminate(_ application: UIApplication) {
+    func applicationWillTerminate(_: UIApplication) {
     }
 }

@@ -6,19 +6,18 @@
 //  Copyright © 2018 Syed Askari. All rights reserved.
 //
 
-import UIKit
 import CoreLocation
 import FirebaseDatabase
+import UIKit
 
-class NewViewController: UIViewController  {
-
+class NewViewController: UIViewController {
     var locationManager: CLLocationManager!
     var geoCoder: CLGeocoder!
     var ref: DatabaseReference!
 
-    @IBOutlet weak var receiptNumber: UITextField!
-    @IBOutlet weak var nextBtn: UIButton!
-    
+    @IBOutlet var receiptNumber: UITextField!
+    @IBOutlet var nextBtn: UIButton!
+
     var name: String!
     var lat: Double!
     var lng: Double!
@@ -27,7 +26,7 @@ class NewViewController: UIViewController  {
     var country: String!
     var timeStamp: String!
     var alert: UIAlertController!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,31 +37,31 @@ class NewViewController: UIViewController  {
 
         ref = Database.database().reference()
 //        self.location()
-        
-        _ = DataModel.init(name: "test", receiptNumber: "test123", rating: 2)
-        self.UI()
+
+        _ = DataModel(name: "test", receiptNumber: "test123", rating: 2)
+        UI()
     }
 
     func UI() {
-        self.nextBtn.layer.cornerRadius = 8
-        self.nextBtn.layer.borderWidth = 1.5
-        self.nextBtn.layer.borderColor = (UIColor.white).cgColor
+        nextBtn.layer.cornerRadius = 8
+        nextBtn.layer.borderWidth = 1.5
+        nextBtn.layer.borderColor = (UIColor.white).cgColor
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.location()
+
+    override func viewWillAppear(_: Bool) {
+        location()
     }
-    
+
     func createSettingsAlertController(title: String, message: String) {
         let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
 //        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment:"" ), style: .cancel, handler: nil)
-        let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment:"" ), style: .default, handler: { action in
-            if let url = URL(string:UIApplicationOpenSettingsURLString) {
+        let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment: ""), style: .default, handler: { _ in
+            if let url = URL(string: UIApplicationOpenSettingsURLString) {
                 if UIApplication.shared.canOpenURL(url) {
                     if #available(iOS 10.0, *) {
                         UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -74,10 +73,10 @@ class NewViewController: UIViewController  {
         })
 //        controller.addAction(cancelAction)
         controller.addAction(settingsAction)
-        
-        self.present(controller, animated: true, completion: nil)
+
+        present(controller, animated: true, completion: nil)
     }
-    
+
     func location() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -100,41 +99,41 @@ class NewViewController: UIViewController  {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         } else {
-                print("Location services are not enabled")
-                createSettingsAlertController(title: "Issue", message: "Please enable location from settings")
+            print("Location services are not enabled")
+            createSettingsAlertController(title: "Issue", message: "Please enable location from settings")
         }
     }
-    
-    @IBAction func nextBtnAction(_ sender: UIButton) {
+
+    @IBAction func nextBtnAction(_: UIButton) {
         if (receiptNumber.text?.isEmpty)! {
             receiptNumber.shake()
             return
         }
-        
+
         guard let lat2 = lat else {
             locationManager.startUpdatingLocation()
             return
         }
-        
+
         // to get data from firebase database
         ref
             .child("\(receiptNumber.text!)")
-            .observe(DataEventType.value)
-            { (snapshot) in
+            .observe(DataEventType.value) { snapshot in
                 let value = snapshot.value as? NSDictionary
                 let receipt = value?.value(forKeyPath: "receiptNumber") as? String
                 if self.receiptNumber.text! != receipt {
                     self.performSegue(withIdentifier: "showRating", sender: self)
                 } else {
-                    print ("already exists")
+                    print("already exists")
                     self.receiptNumber.shake()
                 }
-        }
+            }
     }
-    
+
     // MARK: - Navigation
+
 //     In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "showRating" {
             let vc: ViewController = segue.destination as! ViewController // swiftlint:disable:this force_cast
             vc.name = name!
@@ -150,14 +149,14 @@ class NewViewController: UIViewController  {
 }
 
 extension NewViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locationArray = locations as NSArray
         let locationObj = locationArray.lastObject as! CLLocation // swiftlint:disable:this force_cast
         let coord = locationObj.coordinate
 
         lat = coord.latitude
         lng = coord.longitude
-        CLGeocoder().reverseGeocodeLocation(locationObj) {(placemarks, error) in
+        CLGeocoder().reverseGeocodeLocation(locationObj) { placemarks, error in
             if error != nil {
                 print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
                 return
@@ -170,18 +169,18 @@ extension NewViewController: CLLocationManagerDelegate {
             }
         }
     }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+
+    func locationManager(_: CLLocationManager, didFailWithError error: Error) {
         locationManager.stopUpdatingLocation()
-        if error != nil{
+        if error != nil {
             print("Error: " + error.localizedDescription)
-            self.createSettingsAlertController(title: "Issue", message: "Enable location from settings and check for app permissions")
+            createSettingsAlertController(title: "Issue", message: "Enable location from settings and check for app permissions")
         }
     }
-    
+
     func displayLocationInfo(placemark: CLPlacemark) {
         if placemark != nil {
-            //stop updating location to save battery life
+            // stop updating location to save battery life
             locationManager.stopUpdatingLocation()
             if let name1 = placemark.name {
                 name = name1
@@ -213,7 +212,7 @@ extension UIView {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         animation.duration = 0.6
-        animation.values = [-7.0, 7.0, -7.0, 7.0, -5.0, 5.0, -2.0, 2.0, 0.0 ]
+        animation.values = [-7.0, 7.0, -7.0, 7.0, -5.0, 5.0, -2.0, 2.0, 0.0]
         layer.add(animation, forKey: "shake")
     }
 }
