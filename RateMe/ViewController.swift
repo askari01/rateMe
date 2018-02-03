@@ -49,14 +49,14 @@ class ViewController: UIViewController {
         ref
             .child("\(self.receiptNumber!)")
             .setValue([
-            "name": "\(self.name)",
+            "name": "\(self.name!)",
             "receiptNumber": "\(self.receiptNumber!)",
             "lat": "\(self.lat!)",
             "lng": "\(self.lng!)",
-            "locality": "\(self.locality)",
-            "postalCode": "\(self.postalCode)",
-            "country": "\(self.country)",
-            "timeStamp": "\(self.timeStamp)",
+            "locality": "\(self.locality!)",
+            "postalCode": "\(self.postalCode!)",
+            "country": "\(self.country!)",
+            "timeStamp": "\(self.timeStamp!)",
             "rating": self.rating])
         
         // Creating StatusAlert instance

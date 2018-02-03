@@ -121,14 +121,14 @@ class NewViewController: UIViewController  {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showRating" {
             let vc: ViewController = segue.destination as! ViewController // swiftlint:disable:this force_cast
-            vc.name = name
+            vc.name = name!
             vc.receiptNumber = receiptNumber.text!
             vc.lat = lat
             vc.lng = lng
-            vc.locality = locality
-            vc.postalCode = postalCode
-            vc.country = country
-            vc.timeStamp = timeStamp
+            vc.locality = locality!
+            vc.postalCode = postalCode!
+            vc.country = country!
+            vc.timeStamp = timeStamp!
         }
     }
 }
