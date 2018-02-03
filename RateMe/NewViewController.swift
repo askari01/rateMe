@@ -54,7 +54,15 @@ class NewViewController: UIViewController  {
         let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
 //        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment:"" ), style: .cancel, handler: nil)
         let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment:"" ), style: .default, handler: { action in
-            UIApplication.shared.canOpenURL(URL(string: UIApplicationOpenSettingsURLString)!)
+            if let url = URL(string:UIApplicationOpenSettingsURLString) {
+                if UIApplication.shared.canOpenURL(url) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+            }
         })
 //        controller.addAction(cancelAction)
         controller.addAction(settingsAction)
