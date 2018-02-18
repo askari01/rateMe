@@ -54,7 +54,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RateMe/NewViewController.swift"
@@ -65,6 +65,38 @@
             endingLineNumber = "169"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RateMe.NewViewController.locationManager(__ObjC.CLLocationManager, didUpdateLocations: Swift.Array&lt;__ObjC.CLLocation&gt;) -&gt; ()"
+                  moduleName = "RateMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/syedaskari/Projects/RateMe/RateMe/NewViewController.swift"
+                  timestampString = "539849563.558012"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170"
+                  offsetFromSymbolStart = "768">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__ObjC.CLPlacemark&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in RateMe.NewViewController.locationManager(__ObjC.CLLocationManager, didUpdateLocations: Swift.Array&lt;__ObjC.CLLocation&gt;) -&gt; ()"
+                  moduleName = "RateMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/syedaskari/Projects/RateMe/RateMe/NewViewController.swift"
+                  timestampString = "539849563.559976"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170"
+                  offsetFromSymbolStart = "1492">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

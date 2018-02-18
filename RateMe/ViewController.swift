@@ -31,7 +31,7 @@ class ViewController: UIViewController {
 
         // Do any additional setup after loading the view, typically from a nib.
         floatingRatingView.delegate = self as? FloatRatingViewDelegate
-        floatingRatingView.type = .halfRatings
+        floatingRatingView.type = .floatRatings
 
         // must be called after reference for storing offline data
         ref = Database.database().reference()
